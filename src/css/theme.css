@@ -1,0 +1,113 @@
+/* =========================
+   THEME VARIABLES & STYLES
+   ========================= */
+   :root {
+    /* ===== COLORS ===== */
+    --color-primary: #1565C0;
+    --color-primary-dark: #0D47A1;
+    --color-accent: #00ACC1;
+    --color-background: #FAFAFA;
+    --color-surface: #FFFFFF;
+    --color-surface-alt: #FFFFFF;
+    --color-text-main: #1A1A1A;
+    --color-success: #2E7D32;
+    --color-warning: #FFA000;
+    --color-error: #D32F2F;
+    --color-shadow: rgba(0, 0, 0, 0.08);
+    /* --color-border: rgba(0, 0, 0, 0.08); */
+  
+    /* ===== TYPOGRAPHY ===== */
+    --font-base: "Inter", "Roboto", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    --font-weight-regular: 400;
+    --font-weight-medium: 500;
+    --font-weight-semibold: 600;
+  
+    --h1-size: 2rem;   /* 32px */
+    --h2-size: 1.5rem; /* 24px */
+    --h3-size: 1.125rem; /* 18px */
+    --body-size: 1rem; /* 16px */
+    --line-height: 1.5;
+  
+    /* ===== BUTTONS ===== */
+    --btn-radius: 8px;
+    --btn-padding-y: 0.6rem;
+    --btn-padding-x: 1.25rem;
+    --btn-font-size: 0.95rem;
+  }
+  
+  /* ===== BASE STYLES ===== */
+  body {
+    font-family: var(--font-base);
+    font-weight: var(--font-weight-regular);
+    color: var(--color-text-main);
+    background-color: var(--color-background);
+    line-height: var(--line-height);
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Headings */
+  h1, h2, h3 {
+    margin: 0 0 0.5em;
+    font-weight: var(--font-weight-semibold);
+    line-height: var(--line-height);
+  }
+  h1 { font-size: var(--h1-size); }
+  h2 { font-size: var(--h2-size); }
+  h3 { font-size: var(--h3-size); }
+  
+  /* Paragraph / Body */
+  p {
+    font-size: var(--body-size);
+    margin-bottom: 1em;
+  }
+  
+  /* ===== CARD STYLES ===== */
+  .card {
+    background-color: var(--color-surface);
+    box-shadow: 0 2px 8px var(--color-shadow);
+    border-radius: 12px;
+    padding: 1.5rem;
+  }
+  
+  /* ===== BUTTONS ===== */
+  .btn {
+    font-family: var(--font-base);
+    font-size: var(--btn-font-size);
+    font-weight: var(--font-weight-medium);
+    padding: var(--btn-padding-y) var(--btn-padding-x);
+    border-radius: var(--btn-radius);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-transform: uppercase;
+  }
+  
+  /* Primary Button */
+  .btn-primary {
+    background-color: var(--color-primary);
+    color: #fff;
+    border: none;
+  }
+  .btn-primary:hover {
+    background-color: var(--color-primary-dark);
+  }
+  
+  /* Secondary Button */
+  .btn-secondary {
+    background-color: #fff;
+    color: var(--color-primary);
+    border: 1px solid var(--color-primary);
+  }
+  .btn-secondary:hover {
+    background-color: rgba(21, 101, 192, 0.1);
+  }
+  
+  /* Disabled Button */
+  .btn:disabled,
+  .btn.disabled {
+    background-color: #E0E0E0;
+    color: #9E9E9E;
+    border: none;
+    cursor: not-allowed;
+  }
+  
