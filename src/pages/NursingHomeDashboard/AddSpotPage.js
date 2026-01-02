@@ -336,27 +336,6 @@ const AddSpotPage = ({ editData, onBack }) => {
         spotId = response.data.data.id;
         toast.success("Pflegeplatz erfolgreich hinzugefügt!");
       }
-
-      // 2️⃣ Upload images for this spot
-      // if (photos.length > 0) {
-      //   const imgFormData = new FormData();
-      //   imgFormData.append("place_id", spotId);
-
-      //   photos.forEach((img, idx) => {
-      //     if (img.file) {
-      //       imgFormData.append("photos[]", img.file);
-      //       imgFormData.append(`alt_text[${idx}]`, img.alt_text); // send alt text
-      //     }
-      //   });
-
-      //   await axios.post(`${BaseUrl}place-images`, imgFormData, {
-      //     headers: {
-      //       Authorization: `Bearer ${token}`,
-      //       "Content-Type": "multipart/form-data",
-      //     },
-      //   });
-      // }
-      // 2️⃣ Upload images for this spot
       if (photos.length > 0) {
         const imgFormData = new FormData();
         imgFormData.append("place_id", spotId);
@@ -395,15 +374,18 @@ const AddSpotPage = ({ editData, onBack }) => {
           },
         });
       }
-
-
-
       onBack(); // Go back after save
 
     } catch (error) {
-      console.error(error);
-      toast.error("Fehler beim Speichern des Pflegeplatzes oder Bilder-Upload!");
-    }
+        console.error(error);
+
+        if (error.response && error.response.data) {
+          toast.error(error.response.data.message);
+        } else {
+          toast.error("Fehler beim Speichern des Pflegeplatzes!");
+        }
+      }
+
   };
 
 

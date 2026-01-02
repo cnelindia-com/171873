@@ -18,10 +18,8 @@ const SectionTitle = styled.h2`
   font-size: 1.8rem;
   font-weight: 700;
   color: #2c3e50;
-  margin-bottom: 0.75rem; /* Reduced margin */
-  margin-top: 0.5rem; /* Reduced margin from the top */
+  margin-bottom: 1.5rem;
 `;
-
 
 const Card = styled.div`
   background: #fff;
@@ -73,13 +71,12 @@ const PlanCard = styled(Card)`
   text-align: center;
   border: 2px solid transparent;
   transition: 0.3s;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 100%;
-  padding-bottom: 1.5rem;
-`;
 
+  &:hover {
+    border-color: #667eea;
+    transform: translateY(-4px);
+  }
+`;
 
 const PlanName = styled.h3`
   font-size: 1.4rem;
@@ -90,12 +87,7 @@ const Price = styled.p`
   font-size: 1.2rem;
   font-weight: 700;
   margin: 0.5rem 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 40px; /* Ensure equal height for the price section */
 `;
-
 
 const Features = styled.ul`
   list-style: none;
@@ -131,22 +123,6 @@ const Button = styled.button`
   }
 `;
 
-const ButtonWrapper = styled.div`
-  margin-top: 1.5rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
-
-const PlanContent = styled.div`
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 100%;
-`;
-
-
 /* ================= COMPONENT ================= */
 const SubscriptionPage = () => {
   const [currentPlan, setCurrentPlan] = useState(null);
@@ -158,7 +134,7 @@ const SubscriptionPage = () => {
   const token = localStorage.getItem("pflegeUserToken");
 
   useEffect(() => {
-
+    
     /* ===== Fetch Plans ===== */
     fetch(`${BaseUrl}stripe/plans`, {
       headers: {
@@ -190,100 +166,98 @@ const SubscriptionPage = () => {
       })
       .catch((err) => console.error("Current plan error:", err));
 
-
+      
   }, [token]);
 
-  //  useEffect(() => {
-  //   const sessionId = "cs_test_a1xZxcNaFg9T7K1Ev80e2RxIDc2LVtdZcNJgxijzS9m2aNwhg27btmX3N7"
-  //   alert(sessionId);
-  //   if (!sessionId) return;
+//  useEffect(() => {
+//   const sessionId = "cs_test_a1xZxcNaFg9T7K1Ev80e2RxIDc2LVtdZcNJgxijzS9m2aNwhg27btmX3N7"
+//   alert(sessionId);
+//   if (!sessionId) return;
 
-  //   fetch(`${BaseUrl}stripe/subscription-success`, {
-  //     method: "POST",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     },
-  //     body: JSON.stringify({ session_id: sessionId }),
-  //   })
-  //     .then(res => res.json())
-  //     .then(() => {
-  //       window.history.replaceState({}, "", "/dashboard/subscription");
-  //     });
-  // }, []);
+//   fetch(`${BaseUrl}stripe/subscription-success`, {
+//     method: "POST",
+//     headers: {
+//       "Content-Type": "application/json",
+//     },
+//     body: JSON.stringify({ session_id: sessionId }),
+//   })
+//     .then(res => res.json())
+//     .then(() => {
+//       window.history.replaceState({}, "", "/dashboard/subscription");
+//     });
+// }, []);
 
 
 
   /* ===== SUBSCRIBE ===== */
-  const handleSubscribe = async (stripePriceId) => {
-    try {
-      setLoading(true);
+ const handleSubscribe = async (stripePriceId) => {
+  try {
+    setLoading(true);
 
-      const res = await fetch(`${BaseUrl}create-subscription-session`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify({ price_id: stripePriceId }),
-      });
+    const res = await fetch(`${BaseUrl}create-subscription-session`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify({ price_id: stripePriceId }),
+    });
 
-      if (!res.ok) throw new Error(await res.text());
+    if (!res.ok) throw new Error(await res.text());
 
-      const data = await res.json();
+    const data = await res.json();
 
-      // Redirect directly to the session URL
-      if (data.url) {
-        window.location.href = data.url;
-        // window.open(data.url, "_blank");
-      } else {
-        throw new Error("No Stripe session URL returned.");
-      }
-
-    } catch (error) {
-      console.error("Stripe subscribe error:", error);
-      alert("Unable to start subscription. Please try again.");
-    } finally {
-      setLoading(false);
+    // Redirect directly to the session URL
+    if (data.url) {
+      window.location.href = data.url;
+    } else {
+      throw new Error("No Stripe session URL returned.");
     }
-  };
+
+  } catch (error) {
+    console.error("Stripe subscribe error:", error);
+    alert("Unable to start subscription. Please try again.");
+  } finally {
+    setLoading(false);
+  }
+};
 
 
   /* ===== MANAGE SUBSCRIPTION ===== */
   const handleManageSubscription = async () => {
+  try {
+    const res = await fetch(`${BaseUrl}stripe/customer-portal`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify({}) // Add empty body if needed
+    });
+
+    const text = await res.text();
+    let data;
+    
     try {
-      const res = await fetch(`${BaseUrl}stripe/customer-portal`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify({}) // Add empty body if needed
-      });
-
-      const text = await res.text();
-      let data;
-
-      try {
-        data = JSON.parse(text);
-      } catch {
-        throw new Error(text || "Invalid response from server");
-      }
-
-      if (!res.ok) {
-        throw new Error(data.message || data.error || "Request failed");
-      }
-
-      if (data.url) {
-        // window.location.href = data.url;
-        window.open(data.url, "_blank");
-      } else {
-        throw new Error("No portal URL received");
-      }
-    } catch (error) {
-      console.error("Customer portal error:", error);
-      alert(`Unable to open customer portal: ${error.message}`);
+      data = JSON.parse(text);
+    } catch {
+      throw new Error(text || "Invalid response from server");
     }
-  };
+
+    if (!res.ok) {
+      throw new Error(data.message || data.error || "Request failed");
+    }
+
+    if (data.url) {
+      window.location.href = data.url;
+    } else {
+      throw new Error("No portal URL received");
+    }
+  } catch (error) {
+    console.error("Customer portal error:", error);
+    alert(`Unable to open customer portal: ${error.message}`);
+  }
+};
 
   return (
     <MainContent>
@@ -305,15 +279,15 @@ const SubscriptionPage = () => {
             <Info>
               <Label>Next Billing</Label>
               <Value>
-                {currentPeriodEnd
+                {currentPeriodEnd 
                   ? new Date(currentPeriodEnd).toLocaleDateString('en-US', {
-                    year: 'numeric',
-                    month: 'long',
-                    day: 'numeric'
-                  })
+                      year: 'numeric',
+                      month: 'long',
+                      day: 'numeric'
+                    })
                   : "None"}
-              </Value>
-            </Info>
+              </Value>            
+              </Info>
             <Button onClick={handleManageSubscription}>
               Manage Subscription
             </Button>
@@ -326,51 +300,35 @@ const SubscriptionPage = () => {
         </SectionTitle>
 
         <Plans>
-  {plans
-    .slice() // Make a copy of the plans array to avoid mutating the original one
-    .reverse() // Reverse the array to show the latest plan first
-    .map((plan) => {
-      const isActive = plan.name === currentPlan;
+          {plans.map((plan) => {
+            const isActive = plan.name === currentPlan;
 
-      return (
-        <PlanCard key={plan.id}>
-          <PlanContent>
-            <PlanName>{plan.name}</PlanName>
-            <Price>
-              {plan.price} {plan.currency}/{plan.interval}
-            </Price>
+            return (
+              <PlanCard key={plan.id}>
+                <PlanName>{plan.name}</PlanName>
+                <Price>
+                  {plan.price} {plan.currency}/{plan.interval}
+                </Price>
 
-            <Features>
-              {plan.features?.map((f, i) => (
-                <Feature key={i}>{f}</Feature>
-              ))}
-            </Features>
-          </PlanContent>
+                <Features>
+                  {plan.features?.map((f, i) => (
+                    <Feature key={i}>{f}</Feature>
+                  ))}
+                </Features>
 
-          <ButtonWrapper>
-            <Button
-              disabled={loading}
-              active={isActive}
-              onClick={() => {
-                if (currentPlan) {
-                  handleManageSubscription(); // 🔥 UPGRADE / DOWNGRADE
-                } else {
-                  handleSubscribe(plan.id); // 🆕 FIRST TIME BUY
-                }
-              }}
-            >
-              {isActive
-                ? "Current Plan"
-                : currentPlan
-                  ? "Upgrade Plan"
-                  : "Choose Plan"}
-            </Button>
-          </ButtonWrapper>
-        </PlanCard>
-      );
-    })}
-</Plans>
-
+                <Button
+                  disabled={isActive || loading}
+                  active={isActive}
+                  onClick={() =>
+                    !isActive && handleSubscribe(plan.id)
+                  }
+                >
+                  {isActive ? "Current Plan" : "Choose Plan"}
+                </Button>
+              </PlanCard>
+            );
+          })}
+        </Plans>
       </Page>
     </MainContent>
   );

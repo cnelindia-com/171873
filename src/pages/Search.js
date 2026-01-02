@@ -23,6 +23,21 @@ import {
   DetailsBtn,
 } from "./Styles";
 import Pagination from "./Pagination";
+import styled from "styled-components";
+
+export const FeaturedBadge = styled.div`
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: gold;
+  color: #000;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 4px 8px;
+  border-radius: 6px;
+  text-transform: uppercase;
+  z-index: 2;
+`;
 
 export default function SearchPage() {
   const navigate = useNavigate();
@@ -265,6 +280,10 @@ export default function SearchPage() {
       <ResultsGrid>
         {results.map((f) => (
           <Card key={f.id}>
+            {/* ⭐ FEATURED BADGE */}
+            {f.is_featured === 1 && (
+              <FeaturedBadge>Featured</FeaturedBadge>
+            )}
             <Name>{f.name_of_the_place}</Name>
             <Address>{f.address}</Address>
 

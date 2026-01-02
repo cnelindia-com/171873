@@ -197,6 +197,8 @@ function LoginRegister() {
           localStorage.setItem("pflegeUserName", user.name);
           localStorage.setItem("pflegeUserId", user.id);
           localStorage.setItem("pflegeUsertype", user.user_type);
+          localStorage.setItem("pflegeCurrentPlan", user.current_plan);
+          localStorage.setItem("pflegePlanStatus", user.plan_status);
 
           if (token) localStorage.setItem("pflegeUserToken", token);
 
@@ -229,6 +231,8 @@ function LoginRegister() {
           localStorage.setItem("pflegeUserName", user.name);
           localStorage.setItem("pflegeUserId", user.id);
           localStorage.setItem("pflegeUsertype", user.user_type);
+          localStorage.setItem("pflegeCurrentPlan", user.current_plan);
+          localStorage.setItem("pflegePlanStatus", user.plan_status);
 
           if (token) localStorage.setItem("pflegeUserToken", token);
 

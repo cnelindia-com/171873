@@ -9,19 +9,53 @@ import {
   MenuItem,
   MenuIcon,
 } from "./StyledComponents";
+import { BaseUrl } from "../../BaseUrl";
 
-const SidebarMenu = ({ userName, activeSection, setActiveSection, handleLogout }) => {
-  const [userType, setUserType] = useState(null);
-const goTo = (section, path) => {
+const SidebarMenu = ({
+  userName,
+  activeSection,
+  setActiveSection,
+  handleLogout,
+}) => {
+  const navigate = useNavigate();
+
+  const [userType, setUserType] = useState(null); // 2 = admin
+  const [currentPlan, setCurrentPlan] = useState(null);
+  const [currentStatus, setCurrentStatus] = useState(null);
+
+  const token = localStorage.getItem("token");
+
+  const goTo = (section, path) => {
     setActiveSection(section);
     navigate(path);
   };
 
+  /* ===== Get user type ===== */
   useEffect(() => {
-    const type = localStorage.getItem("pflegeUsertype");
-    setUserType(type);
-  }, []); // run once on mount
-const navigate = useNavigate();
+    setUserType(localStorage.getItem("pflegeUsertype"));
+  }, []);
+
+  /* ===== Fetch current subscription ===== */
+  useEffect(() => {
+    if (!token) return;
+
+    fetch(`${BaseUrl}stripe/current-subscription`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setCurrentPlan(data?.planName?.toLowerCase() || null);
+        setCurrentStatus(data?.status || null);
+      })
+      .catch((err) => console.error("Subscription error:", err));
+  }, [token]);
+
+  /* ===== Conditions ===== */
+  const isAdmin = userType === "2";
+  const isEnterprise = currentPlan === "enterprise";
+
   return (
     <Sidebar>
       <SidebarHeader>
@@ -39,40 +73,34 @@ const navigate = useNavigate();
 
         <MenuItem
           active={activeSection === "spots"}
-          onClick={() => goTo("spots", "dashboard/places")}
+          onClick={() => goTo("spots", "/dashboard/places")}
         >
           <MenuIcon /> Meine Orte
         </MenuItem>
 
-        <MenuItem
-          active={activeSection === "leads"}
-          onClick={() => goTo("leads", "dashboard/leads")}
-        >
-          <MenuIcon /> Leads & Analysen
-        </MenuItem>
+        {/* 🔥 LEADS: Admin OR Enterprise users */}
+        {(isAdmin || isEnterprise && currentStatus === "active") && (
+          <MenuItem
+            active={activeSection === "leads"}
+            onClick={() => goTo("leads", "/dashboard/leads")}
+          >
+            <MenuIcon /> Leads & Analysen
+          </MenuItem>
+        )}
 
         <MenuItem
           active={activeSection === "subscription"}
-          onClick={() => goTo("subscription", "dashboard/subscription")}
+          onClick={() => goTo("subscription", "/dashboard/subscription")}
         >
           <MenuIcon /> Abonnement
         </MenuItem>
 
         <MenuItem
           active={activeSection === "profile"}
-          onClick={() => goTo("profile", "dashboard/profile")}
+          onClick={() => goTo("profile", "/dashboard/profile")}
         >
           <MenuIcon /> Profileinstellungen
         </MenuItem>
-
-        {/* {userType === "2" && (
-          <MenuItem
-            active={activeSection === "users"}
-            onClick={() => goTo("users", "dashboard/users")}
-          >
-            <MenuIcon /> Nutzer
-          </MenuItem>
-        )} */}
 
         <MenuItem onClick={handleLogout}>
           <MenuIcon /> Abmelden

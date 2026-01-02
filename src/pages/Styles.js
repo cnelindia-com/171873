@@ -108,6 +108,7 @@ export const ResultsGrid = styled.div`
 `;
 
 export const Card = styled.div`
+ position: relative;
   background: var(--color-surface);
   padding: 1.6rem;
   border-radius: 12px;
