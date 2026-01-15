@@ -36,6 +36,7 @@ class User extends Authenticatable
          // ✅ stripe & subscription fields (ONLY KEYS)
         'current_plan',
         'plan_status',
+        'current_period_end',
         'stripe_customer_id',
 
     ];

@@ -23,6 +23,10 @@ use App\Http\Controllers\Api\PlaceImageController;
 use App\Http\Controllers\Api\DashboardController;
 use App\Http\Controllers\Api\StripeController;
 use App\Http\Controllers\Api\WebhookController;
+use App\Http\Controllers\Api\PlanMaintenanceController;
+use App\Http\Controllers\Api\UserController;
+use App\Http\Controllers\Api\AuditLogController;
+use App\Http\Controllers\Api\SubscriptionController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -60,10 +64,12 @@ Route::middleware('auth:sanctum')->group(function () {
     
     // 🔹 New Update Profile Route
     Route::put('/update-profile', [ProfileController::class, 'updateProfile']);
+    Route::put('/change-password', [ProfileController::class, 'changePassword']);
 });
 
 Route::middleware('auth:sanctum')->group(function () {
     Route::get('/get-profile', [GetProfileController::class, 'getProfile']);
+    Route::post('update-profile-image', [GetProfileController::class, 'updateProfileImage']);
 });
 
 Route::middleware('auth:sanctum')->group(function () {
@@ -113,6 +119,8 @@ Route::middleware('auth:sanctum')->group(function () {
 Route::get('/dashboard/overview', [DashboardController::class, 'overview']);
 });
 
+Route::get('/dashboard/count', [DashboardController::class, 'count']);
+
 Route::middleware('auth:sanctum')->group(function () {
     Route::get('/stripe/plans', [StripeController::class, 'getPlans']);
     Route::post('/create-subscription-session', [StripeController::class, 'createSubscriptionSession']);
@@ -124,6 +132,17 @@ Route::middleware('auth:sanctum')->group(function () {
     });
 Route::post('/stripe/webhook', [WebhookController::class, 'handleWebhook']);
 
+// Maintenance Route to expire trial plans
+Route::get('/expire-trial-plans', [PlanMaintenanceController::class, 'expireTrialPlans']);
 
+Route::middleware('auth:sanctum')->group(function () {
+    Route::get('/user/me', [UserController::class, 'getCurrentUser']);
+});
+Route::middleware('auth:sanctum')->group(function () {
+   Route::get('/audit-logs', [AuditLogController::class, 'index']);
+   Route::delete('audit-logs/{id}', [AuditLogController::class, 'destroy']);
+});
+Route::middleware('auth:sanctum')->group(function () {
+    Route::get('/subscriptions', [SubscriptionController::class, 'index']);
+});
 
-  

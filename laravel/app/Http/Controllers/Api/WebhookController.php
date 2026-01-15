@@ -9,6 +9,7 @@ use Stripe\Product;
 use Stripe\Stripe;
 use Stripe\Webhook;
 use App\Models\Spot;
+use App\Models\AuditLog;
 
 class WebhookController extends Controller
 {
@@ -35,6 +36,11 @@ class WebhookController extends Controller
 
     private function syncUserSpotsWithPlan($user)
 {
+
+    $oldSpots = Spot::where('user_id', $user->id)->get()->map(function($spot){
+        return $spot->only(['priority_score', 'is_featured', 'plan_level_cached']);
+    })->toArray();
+
     $plan = strtolower($user->current_plan);
     $planStatus = strtolower($user->plan_status);
 
@@ -86,6 +92,22 @@ class WebhookController extends Controller
             'plan_level_cached' => 'enterprise',
         ]);
     }
+
+    $newSpots = Spot::where('user_id', $user->id)->get()->map(function($spot){
+        return $spot->only(['priority_score', 'is_featured', 'plan_level_cached']);
+    })->toArray();
+
+    AuditLog::create([
+        'user_id'      => $user->id,
+        'action_type'  => 'SPOTS_UPDATED',
+        'reference_id' => $user->id,
+        'meta'         => [
+            'before' => $oldSpots,
+            'after'  => $newSpots,
+            'timestamp' => now(),
+        ],
+    ]);
+
 }
 
     /**
@@ -175,7 +197,7 @@ class WebhookController extends Controller
                     $this->writeDebug('No user found for customer ID: ' . $s->customer);
                     break;
                 }
-
+                    $oldData = $user->only(['plan_status', 'current_plan', 'current_period_start', 'current_period_end']);
                 // Prepare the data to be updated
                 $data = [
                     'plan_status'  => $s->status ?? $user->plan_status,
@@ -212,6 +234,17 @@ class WebhookController extends Controller
 
                 // Update user record
                 $user->update($data);
+                AuditLog::create([
+                'user_id'      => $user->id,
+                'action_type'  => 'SUBSCRIPTION_UPDATED',
+                'reference_id' => $user->id,
+                'meta'         => [
+                    'before' => $oldData,
+                    'after'  => $data,
+                    'event_id' => $event->id ?? null,
+                    'timestamp' => now(),
+                ],
+            ]);
                  // 🔥 IMPORTANT
                 $this->syncUserSpotsWithPlan($user);
                 $this->writeDebug('User updated successfully for subscription updated');

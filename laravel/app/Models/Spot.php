@@ -14,20 +14,25 @@ class Spot extends Model
         'room_type',
         'care_level',
         'availability',
-        'available_from',
-        'available_spots',
+        // 'available_from',
+        // 'available_spots',
         'address_street',
         'price_per_month',
         'user_id',
         'latitude',
         'longitude',
         'description',
+        'desc',
         'postal_code',
         'city',
         'priority_score',
         'plan_level_cached',
         'is_featured',   // ✅ ADD THIS
         'status'
+    ];
+     // ✅ JSON cast (VERY IMPORTANT)
+    protected $casts = [
+        'desc' => 'array',
     ];
 
     // ❌ Disable timestamps (created_at & updated_at)

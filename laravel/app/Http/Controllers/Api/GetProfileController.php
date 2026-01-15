@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Facades\Storage;
 
 class GetProfileController extends Controller
 {
@@ -34,5 +35,40 @@ class GetProfileController extends Controller
             'message' => 'User profile fetched successfully!',
             'data' => $user
         ], 200);
+    }
+
+    public function updateProfileImage(Request $request)
+    {
+        $request->validate([
+            'user_id' => 'required|integer',
+            'image' => 'required|image|mimes:jpg,jpeg,png,webp|max:2048'
+        ]);
+
+        $user = User::find($request->user_id);
+
+        if (!$user) {
+            return response()->json([
+                'status' => false,
+                'message' => 'User not found'
+            ], 404);
+        }
+
+        // old image delete (optional)
+        if ($user->image && Storage::disk('public')->exists($user->image)) {
+            Storage::disk('public')->delete($user->image);
+        }
+
+        // upload new image
+        $path = $request->file('image')->store('profile-images', 'public');
+
+        // save in DB
+        $user->image = $path;
+        $user->save();
+
+        return response()->json([
+            'status' => true,
+            'message' => 'Profile image updated successfully',
+            'image_url' => asset('storage/' . $path)
+        ]);
     }
 }

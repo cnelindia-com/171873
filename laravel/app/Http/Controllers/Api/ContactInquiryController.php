@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Mail;
 use App\Models\Spot;
 use App\Models\User;
 use App\Models\Lead;
+use App\Models\AuditLog;
 
 class ContactInquiryController extends Controller
 {
@@ -21,7 +22,6 @@ class ContactInquiryController extends Controller
             'message'     => 'required|string',
         ]);
 
-        // 1. Find Spot
         $spot = Spot::find($validated['facility_id']);
         if (!$spot) {
             return response()->json([
@@ -30,15 +30,10 @@ class ContactInquiryController extends Controller
             ], 404);
         }
 
-        // 2. Spot Owner
         $spotOwner = User::find($spot->user_id);
-
-        // 3. Admin
         $admin = User::where('user_type', 2)->first();
 
-        // -------------------------------
-        // 4. SAVE DATA INTO LEADS TABLE
-        // -------------------------------
+        // Save lead first
         $lead = Lead::create([
             'facility_id'       => $spot->user_id,
             'place_id'          => $spot->id ?? null,
@@ -48,85 +43,81 @@ class ContactInquiryController extends Controller
             'requested_care_type' =>$spot->care_level ?? null,
             'message'           => $validated['message']
         ]);
-        // dd($spot->care_level);
 
-        // -------------------------------
-        // 5. EMAIL TO PFLEGEHEIM (OWNER)
-        // -------------------------------
+        $emailsSent = [];
+
+        // Send email to owner
         if ($spotOwner && $spotOwner->email) {
+            try {
+                $ownerEmailBody =
+                    "New inquiry received via PflegeFinder\n\n" .
+                    "Place name: " . ($spot->name_of_the_place ?? 'N/A') . "\n" .
+                    "Visitor: " . $validated['name'] . "\n" .
+                    "Email: " . ($validated['email'] ?? '-') . "\n" .
+                    "Phone: " . ($validated['phone'] ?? '-') . "\n" .
+                    "Message: " . $validated['message'] . "\n" .
+                    "Date & Time: " . now();
 
-            $ownerEmailBody =
-                "New inquiry received via PflegeFinder\n\n" .
-                "Place name:\n" .
-                ($spot->name_of_the_place ?? 'N/A') . "\n\n" .
+                Mail::raw($ownerEmailBody, function ($mail) use ($spotOwner, $spot) {
+                    $mail->to($spotOwner->email)
+                        ->subject("[PflegeFinder] New inquiry for your place: " . ($spot->name_of_the_place ?? ''));
+                });
 
-                "Visitor details:\n" .
-                "Name: " . $validated['name'] . "\n" .
-                "Email: " . ($validated['email'] ?? '-') . "\n" .
-                "Phone: " . ($validated['phone'] ?? '-') . "\n\n" .
-
-                "Requested care type:\n" .
-                ($spot->care_level ?? '-') . "\n\n" .
-
-                "Message:\n" .
-                $validated['message'] . "\n\n" .
-
-                "Date & Time:\n" .
-                now() . "\n\n" .
-
-                "----------------------\n" .
-                "This inquiry was generated via PflegeFinder.";
-
-            Mail::raw($ownerEmailBody, function ($mail) use ($spotOwner, $spot) {
-                $mail->to($spotOwner->email)
-                    ->subject("[PflegeFinder] New inquiry for your place: " . ($spot->name_of_the_place ?? ''));
-            });
+                $emailsSent[] = 'owner';
+            } catch (\Exception $e) {
+                // log or ignore
+            }
         }
 
-
-        // -------------------------------
-        // 6. EMAIL TO ADMIN (COPY)
-        // -------------------------------
+        // Send email to admin
         if ($admin && $admin->email) {
+            try {
+                $adminEmailBody =
+                    "New inquiry received via PflegeFinder\n\n" .
+                    "Facility / Place: " . ($spot->name_of_the_place ?? 'N/A') . "\n" .
+                    "Visitor: " . $validated['name'] . "\n" .
+                    "Email: " . ($validated['email'] ?? '-') . "\n" .
+                    "Phone: " . ($validated['phone'] ?? '-') . "\n" .
+                    "Message: " . $validated['message'] . "\n" .
+                    "Date & Time: " . now();
 
-            $adminEmailBody =
-                "New inquiry received via PflegeFinder\n\n" .
-                "Facility / Place:\n" .
-                ($spot->name_of_the_place ?? 'N/A') . "\n\n" .
+                Mail::raw($adminEmailBody, function ($mail) use ($admin, $spot) {
+                    $mail->to($admin->email)
+                        ->subject("[PflegeFinder] New inquiry for " . ($spot->name_of_the_place ?? ''));
+                });
 
-                "Visitor details:\n" .
-                "Name: " . $validated['name'] . "\n" .
-                "Email: " . ($validated['email'] ?? '-') . "\n" .
-                "Phone: " . ($validated['phone'] ?? '-') . "\n\n" .
-
-                "Requested care type:\n" .
-                ($spot->care_level ?? '-') . "\n\n" .
-
-                "Message:\n" .
-                $validated['message'] . "\n\n" .
-
-                "Date & Time:\n" .
-                now() . "\n\n" .
-
-                "----------------------\n" .
-                "This inquiry was generated via PflegeFinder.";
-
-            Mail::raw($adminEmailBody, function ($mail) use ($admin, $spot) {
-                $mail->to($admin->email)
-                    ->subject("[PflegeFinder] New inquiry for " . ($spot->name_of_the_place ?? ''));
-            });
+                $emailsSent[] = 'admin';
+            } catch (\Exception $e) {
+                // log or ignore
+            }
         }
 
+        // ✅ Audit log AFTER emails sent
+        if (!empty($emailsSent)) {
+            AuditLog::create([
+                'user_id'      => $spot->user_id, // visitor is not a logged-in user
+                'action_type'  => 'CREATE_INQUIRY',
+                'reference_id' => $lead->id,
+                'meta'         => [
+                    'facility_id' => $spot->id,
+                    'facility_owner_id' => $spot->user_id,
+                    'visitor_name' => $validated['name'],
+                    'visitor_email' => $validated['email'] ?? null,
+                    'visitor_phone' => $validated['phone'] ?? null,
+                    'message' => $validated['message'],
+                    'emails_sent_to' => $emailsSent, // track who got the email
+                ]
+            ]);
+        }
 
-        // -------------------------------
-        // 7. RESPONSE
-        // -------------------------------
         return response()->json([
             'status' => true,
             'message' => 'Inquiry saved and email sent successfully.',
-            'lead_id' => $lead->id
+            'lead_id' => $lead->id,
+            'emails_sent_to' => $emailsSent
         ]);
     }
+
 
     
 }

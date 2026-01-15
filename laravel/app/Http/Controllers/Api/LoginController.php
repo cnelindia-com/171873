@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use App\Models\User;
+use App\Models\AuditLog;
 
 class LoginController extends Controller
 {
@@ -45,7 +46,18 @@ class LoginController extends Controller
 
         // ✅ Step 3: Generate token
         $token = $user->createToken('auth_token')->plainTextToken;
-
+        // 🔹 Step 5: Audit log for login
+        AuditLog::create([
+            'user_id'      => $user->id,
+            'action_type'  => 'USER_LOGIN',
+            'reference_id' => $user->id,
+            'meta'         => [
+                'email'      => $user->email,
+                'login_at'   => now(),
+                'ip_address' => $request->ip(),
+                'user_agent' => $request->userAgent(),
+            ],
+        ]);
         // ✅ Step 4: Response
         return response()->json([
             'status' => true,
