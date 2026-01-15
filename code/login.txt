@@ -1,0 +1,19 @@
+Little Beattie:
+Front end:  http://clientdemos.in/LittleBeattie/
+Admin: https://clientdemos.in/LittleBeattie/wp-login.php
+UN: Admin
+PW: n#q*SsHGUM(2teANmQ
+
+Cpanel Details
+https://host.e-orchids.co.in:2083
+clientdemo
+D?YdImIEr+9i
+
+
+DB_DATABASE=read_MuhammadM123
+DB_USERNAME=read_read_MuhammadM123
+DB_PASSWORD=vL2fI6lrit%D7!aH
+
+Website address https://dashboard.stripe.com
+nikita.agarwal@cnel.in
+Cnelnikita@2025
