@@ -354,18 +354,58 @@ const handleResetFilters = async () => {
                 }
               }}
             /> */}
+            {/* <Input
+              placeholder={t("search.form.postal_placeholder")}
+              value={filters.postal_code}
+              onChange={async (e) => {
+                const postal = e.target.value;
+
+                setPostalError(""); // reset error
+
+                setFilters((prev) => ({
+                  ...prev,
+                  postal_code: postal,
+                  city: "", // 🔥 reset city on change
+                }));
+
+                if (postal.length >= 3) {
+                  try {
+                    const res = await axios.get(
+                      `${BaseUrl}city-by-postal?postal_code=${postal}`
+                    );
+
+                    if (res.data.status && res.data.city) {
+                      setFilters((prev) => ({
+                        ...prev,
+                        postal_code: postal,
+                        city: res.data.city, // ✅ city found
+                      }));
+                    } else {
+                      // ❌ postal code not found
+                    setPostalError(t("search.errors.postal_not_found"));
+                    }
+                  } catch (err) {
+                  setPostalError(t("search.errors.postal_not_found"));
+                  }
+                }
+              }}
+            /> */}
+
             <Input
   placeholder={t("search.form.postal_placeholder")}
   value={filters.postal_code}
+  inputMode="numeric"        // 📱 mobile numeric keyboard
+  pattern="[0-9]*"           // 🔢 hint for numbers only
   onChange={async (e) => {
-    const postal = e.target.value;
+    // ❌ remove non-numeric characters
+    const postal = e.target.value.replace(/\D/g, "");
 
-    setPostalError(""); // reset error
+    setPostalError("");
 
     setFilters((prev) => ({
       ...prev,
       postal_code: postal,
-      city: "", // 🔥 reset city on change
+      city: "",
     }));
 
     if (postal.length >= 3) {
@@ -378,29 +418,27 @@ const handleResetFilters = async () => {
           setFilters((prev) => ({
             ...prev,
             postal_code: postal,
-            city: res.data.city, // ✅ city found
+            city: res.data.city,
           }));
         } else {
-          // ❌ postal code not found
-         setPostalError(t("search.errors.postal_not_found"));
+          setPostalError(t("search.errors.postal_not_found"));
         }
       } catch (err) {
-       setPostalError(t("search.errors.postal_not_found"));
+        setPostalError(t("search.errors.postal_not_found"));
       }
     }
   }}
 />
-{postalError && (
-  <p style={{ color: "red", fontSize: "13px", marginTop: "4px" }}>
-    {postalError}
-  </p>
-)}
+
+
+
 
 
 
           </div>
 
           <div>
+            
             <Label>{t("search.form.city")}</Label>
             {/* <Select
               value={filters.city}
@@ -431,6 +469,23 @@ const handleResetFilters = async () => {
 
           </div>
         </Row>
+{postalError && (
+  <div
+    style={{
+      marginTop: "6px",
+      marginBottom: "8px",
+      padding: "8px 10px",
+      backgroundColor: "#e9e9ed",
+      color: "#0e0d0dbd",
+      fontSize: "13px",
+      borderRadius: "4px",
+      // width: "100%",   // ✅ FIX
+      fontWeight: "600",
+    }}
+  >
+    {postalError}
+  </div>
+)}
 
         <Row>
           <div>
