@@ -1,0 +1,621 @@
+{
+  "dashboard": { "title": "Dashboard" },
+  "greetings": { "hello": "Hello" },
+  "buttons": { "logout": "Logout", "login": "Login" },
+   "auth": {
+    "login_title": "Welcome Back",
+    "register_title": "Create New Account",
+
+    "name": "Name",
+    "facility_name": "Facility Name",
+    "phone": "Phone Number",
+    "street": "Street Address",
+    "postcode": "Postcode",
+    "city": "City",
+    "country": "Country",
+    "email": "Email Address",
+    "password": "Password",
+    "confirm_password": "Confirm Password",
+
+    "login": "Login",
+    "register": "Register",
+
+    "no_account": "Don't have an account?",
+    "have_account": "Already registered?",
+    "register_now": "Register Now",
+    "go_login": "Go to Login",
+
+    "accept_terms": "I accept the",
+    "terms_and_privacy": "Terms & Privacy Policy",
+    "required": "Required fields",
+
+    "password_mismatch": "Password and confirmation do not match!",
+    "login_failed": "Invalid login credentials!",
+    "register_failed": "Registration failed!",
+    "register_success": "Registration successful! Redirecting..."
+  },
+  "home": {
+    "hero": {
+      "title": "Find nursing home places faster.",
+      "subtitle": "Find available nursing home places near you quickly and easily",
+      "cta": "Search Now"
+    },
+
+    "services": {
+      "title": "Our Services",
+      "search": {
+        "title": "Easy Search",
+        "desc": "Find nursing homes by postcode, city, or specific criteria"
+      },
+      "details": {
+        "title": "Detailed Information",
+        "desc": "All important details about care levels, rooms, and availability"
+      },
+      "contact": {
+        "title": "Direct Contact",
+        "desc": "Contact nursing homes directly using our contact form"
+      },
+      "facilities": {
+        "title": "For Nursing Homes",
+        "desc": "Manage your availability and reach new residents"
+      }
+    },
+
+    "stats": {
+      "title": "Our Success in Numbers",
+      "homes": "Registered Nursing Homes",
+      "places": "Available Places",
+      "matches": "Successful Matches"
+    },
+
+    "footer": {
+      "rights": "All rights reserved.",
+      "privacy": "Privacy Policy"
+    },
+
+    "privacy": {
+      "title": "Privacy Policy",
+      "back": "Back",
+      "intro_title": "1. Introduction",
+      "intro": "Welcome to PflegeFinder. Protecting your personal data is very important to us.",
+      "data_title": "2. Data Collection",
+      "data": "We collect personal data such as name, email address, and phone number when you use our services.",
+      "usage_title": "3. Use of Data",
+      "usage": "Your data is used only to help you find nursing homes and respond to your inquiries.",
+      "share_title": "4. Data Sharing",
+      "share": "We do not share your data with third parties unless required by law.",
+      "cookies_title": "5. Cookies",
+      "cookies": "This website uses cookies to improve user experience. You can disable cookies in your browser.",
+      "security_title": "6. Security",
+      "security": "We use modern security measures to protect your data.",
+      "contact_title": "7. Contact",
+      "contact": "For questions, contact us at: info@pflegefinder.de"
+    }
+  },
+  "search": {
+    "title": "Find a Nursing Home",
+    "subtitle": "Find the right home for your loved ones – quickly and easily",
+
+    "form": {
+      "postal_code": "Postal Code",
+      "postal_placeholder": "e.g. 53111",
+      "please_select": "Please select",
+      "city": "City",
+      "all": "All",
+      "care_level": "Care Level",
+      "availability": "Availability",
+      "search": "Search",
+      "reset": "Reset",
+
+      "care_levels": {
+        "1": "Basic",
+        "2": "Dementia",
+        "3": "Intensive",
+        "4": "Short-term"
+      },
+
+      "availability_options": {
+        "1": "Immediately",
+        "2": "Soon",
+        "3": "On Request"
+      },
+      "room_types": {
+        "1": "Single Room",
+        "2": "Double Room"
+      }
+    },
+
+    "results": {
+      "found": "Facilities found",
+      "no_results_title": "No results found",
+      "no_results_desc": "Try changing your filters or searching for a nearby city."
+    },
+
+    "sort": {
+      "recommended": "Recommended",
+      "price_asc": "Price: High to Low",
+      "price_desc": "Price: Low to High",
+      "distance": "Distance",
+      "availability": "Availability"
+    },
+
+    "card": {
+      "featured": "Featured",
+      "care": "Care Type",
+      "room": "Room Type",
+      "availability": "Availability",
+      "price": "Price",
+      "details": "View Details",
+      "price_per_month": "€/month"
+    },
+
+    "alerts": {
+      "city_or_zip": "Please enter a city or postal code"
+    },
+    "plans": {
+      "basic": {
+      "title": "Basic Listing",
+      "sub": "Standard visibility"
+      },
+      "pro": {
+      "title": "Featured Listing",
+      "sub": "Higher visibility in search results"
+      },
+      "enterprise": {
+      "title": "Premium Listing",
+      "sub": "Maximum visibility and preferred placement"
+      },
+      "free": {
+      "title": "Free Listing",
+      "sub": "Free place"
+
+    }
+     },
+     "errors": {
+      "postal_not_found": "Currently, no care facilities are listed for this postal code."
+    }
+  },
+  "details": {
+    "description": "Description",
+    "no_description": "No description available.",
+    "address": "Address",
+    "care_type": "Care Type",
+    "care_basic": "Basic",
+    "care_dementia": "Dementia",
+    "care_intensive": "Intensive",
+    "care_short_term": "Short-Term",
+    "price": "Price",
+    "per_month": "€/month",
+    "availability_immediate": "Immediate",
+    "availability_soon": "Soon",
+    "availability_on_request": "On Request",
+    "rating": "Rating",
+    "request_inquiry": "Request Inquiry",
+    "no_commitment": "No contractual obligation – your inquiry is non-binding.",
+    "key_facts": "Key Facts",
+    "care_levels": {
+      "1": "Basic",
+      "2": "Dementia",
+      "3": "Intensive",
+      "4": "Short-Term"
+    },
+    "room_types": {
+      "1": "Single Room",
+      "2": "Double Room"
+
+    },
+    "availability": {
+      "1": "Available Now",
+      "2": "Coming Soon",
+      "3": "On Request"
+    },
+    "loading": "Loading facility details...",
+    "back_to_search": "Back to search"
+  },
+  "inquiry": {
+    "title": "Send Inquiry",
+    "placeholders": {
+      "name": "Full Name",
+      "email": "Email",
+      "phone": "Phone Number",
+      "care_type": "Select Care Type",
+      "message": "Message (optional)"
+    },
+    "errors": {
+      "required_fields": "Please fill in all required fields.",
+      "invalid_email": "Please enter a valid email address.",
+      "invalid_phone": "Please enter a valid phone number.",
+      "generic": "Something went wrong. Please try again later."
+    },
+    "success": "Thank you! Your inquiry has been successfully sent.",
+    "submit": "Send"
+  },
+  "pagination": {
+    "previous": "Previous",
+    "next": "Next",
+    "page": "Page",
+    "of": "of"
+  },
+  "ad-dashboard": {
+    "welcome": "Welcome back, {{name}}",
+    "default_name": "Your nursing home",
+
+    "stats": {
+      "active_places": "Active places",
+      "total_inquiries": "Total inquiries",
+      "this_month": "This month"
+    },
+
+    "actions": {
+      "add_place": "Add new place",
+      "manage_subscription": "Manage subscription"
+    }
+  },
+   "addSpot": {
+    "add_title": "Add new nursing home",
+    "edit_title": "Edit nursing home",
+    "desc":"Create a new care facility here that will be displayed in the search results.",
+    "back": "Back",
+    "fields": {
+      "user_select": "Select User *",
+      "select_user": "Select User",
+      "place_name": "Place Name *",
+      "room_type": "Room Type *",
+      "care_level": "Care Level *",
+      "price_per_month": "Price per month *",
+      "availability": "Availability *",
+      "description": "Description",
+      "helpers_desc" : "Describe the care facility briefly and objectively (e.g., facilities, location, special features).",
+      "helpers_price" : "The price shown is for guidance purposes only for those searching.",
+      "status": "Status *",
+      "price": "Price € *",
+      "plan_level": "Plan Level",
+      "address": "Address",
+      "street": "Street *",
+      "postal_code": "Postal Code *",
+      "city": "City *",
+      "latitude": "Latitude",
+      "longitude": "Longitude",
+      "lat_lng_note": "Optional: Latitude & Longitude fields for distance calculation",
+      "upload_photos": "Upload Photos",
+      "select": "Select"
+    },
+    "options": {
+      "single_room": "Single Room",
+      "double_room": "Double Room",
+      "basic": "Basic",
+      "dementia": "Dementia",
+      "intensive": "Intensive",
+      "short_term": "Short Term",
+      "immediate": "Immediate",
+      "soon": "Soon",
+      "on_request": "On Request",
+      "active" : "Active",
+      "inactive" : "Inactive",
+      "draft" : "Draft",
+      "free": "Free",
+      "pro": "Pro",
+      "enterprise": "Enterprise"
+
+    },
+    "buttons": {
+      "save": "Save",
+      "update": "Update",
+      "cancel": "Cancel"
+    },
+    "toast": {
+      "login_required": "Please login first!",
+      "spot_added": "The care placement has been successfully saved.",
+      "spot_updated": "Nursing home updated successfully!",
+      "save_error": "Error while saving nursing home!",
+      "users_load_error": "Users could not be loaded"
+    },
+    "errors": {
+      "BASIC_LIMIT_EXCEEDED": "The BASIC plan allows up to 3 active locations. Please upgrade to PRO.",
+      "PLAN_EXPIRED" : "Your plan has expired. You cannot add any new locations. Please upgrade your plan.",
+      "IMAGE_LIMIT_EXCEEDED": "Image limit exceeded. Your plan allows only {{max}} images."
+    },
+    "success": {
+      "IMAGE_UPDATED": "Image successfully updated.",
+      "IMAGE_DELETED": "Image successfully deleted."
+    },
+    "images": {
+      "limit": "You can upload up to {{count}} images based on your plan.",
+      "unlimited": "You can upload unlimited images on your plan."
+    }
+  },
+  "spots": {
+    "title": "My Spots",
+    "add_new": "+ New Spot",
+    "loading": "Loading...",
+    "expired_plan": "Plan expired – upgrade required",
+    "table": {
+      "place_name": "Spot Name",
+      "room_type": "Room Type",
+      "care_type": "Care Type",
+      "price_per_month": "Price (€/Month)",
+      "availability": "Availability",
+      "status": "Status",
+      "plan": "Plan",
+      "actions": "Actions"
+    },
+    "room_types": {
+      "1": "Single Room",
+      "2": "Double Room"
+    },
+     "care_options": {
+        "1": "Basic",
+        "2": "Dementia",
+        "3": "Intensive",
+        "4": "Short-term"
+    },
+    "availability_options": {
+      "1": "Immediate",
+      "2": "Soon",
+      "3": "On Request"
+    },
+    "status_options": {
+      "active": "Active",
+      "inactive": "Inactive",
+      "draft": "Draft"
+    },
+    "plan_options": {
+      "free": "Free",
+      "basic": "Basic",
+      "pro": "Pro",
+      "enterprise": "Enterprise"
+    },
+    "no_spots": "You don't have any spots yet. Start by adding your first available spot.",
+    "buttons": {
+      "add_new": "+ New Spot",
+      "prev": "Prev",
+      "next": "Next",
+      "yes": "Yes",
+      "no": "No",
+      "ok": "OK"
+    },
+    "confirm_delete_title": "Confirm Delete",
+    "confirm_delete_message": "Are you sure you want to delete this spot?",
+    "delete_error_title": "Error",
+    "delete_error_message": "Spot could not be deleted."
+  },
+  "leads": {
+    "title": "Leads & Analytics",
+    "kpi": {
+      "total": "Total Inquiries",
+      "monthly": "Inquiries This Month",
+      "last": "Last Inquiry"
+    },
+    "table": {
+      "title": "Recent Inquiries",
+      "date": "Date",
+      "name": "Name",
+      "care_type": "Care Type",
+      "message": "Message",
+      "status": "Status",
+      "no_inquiries": "No inquiries found"
+    },
+    "care_types": {
+      "1": "Basic",
+      "2": "Dementia",
+      "3": "Intensive",
+      "4": "Short-Term"
+    },
+    "status_options": {
+      "new": "New",
+      "draft": "Draft",
+      "active": "Active"
+    },
+    "pagination": {
+      "prev": "Prev",
+      "next": "Next"
+    }
+  },
+  "profile": {
+  "edit_title": "Edit Profile",
+  "password_title": "Change Password",
+
+  "labels": {
+    "name": "Full Name",
+    "email": "Email",
+    "phone": "Phone Number",
+    "current_password": "Current Password",
+    "new_password": "Password",
+    "confirm_password": "Confirm Password"
+  },
+
+  "buttons": {
+    "save": "Save Changes",
+    "cancel": "Cancel",
+    "loading": "Please wait...",
+    "change_image": "Change Image"
+  },
+
+  "messages": {
+    "password_mismatch": "Password confirmation does not match!",
+    "success": "Profile updated successfully",
+    "error": "Changes could not be saved!"
+  }
+}
+,
+  "audit": {
+    "title": "Audit Logs",
+
+    "table": {
+      "index": "#",
+      "user": "User Name",
+      "action": "Action",
+      "meta": "Meta",
+      "created_at": "Created At",
+      "actions": "Actions",
+      "empty": "No audit logs available."
+    },
+
+    "buttons": {
+      "delete": "Delete",
+      "prev": "Prev",
+      "next": "Next",
+      "yes": "Yes",
+      "no": "No",
+      "ok": "OK"
+    },
+
+    "confirm": {
+      "title": "Confirm Delete",
+      "message": "Are you sure you want to delete this log?"
+    },
+
+    "errors": {
+      "title": "Error",
+      "delete_failed": "Audit log could not be deleted."
+    }
+  },
+  "sidebar": {
+    "title": "Dashboard",
+    "menu": {
+    "dashboard": "Overview",
+    "places": "My Places",
+    "leads": "Leads & Analytics",
+    "subscription": "Subscription",
+    "subscription_list": "Subscription List",
+    "activity_logs": "Activity Logs",
+    "profile": "Profile Settings",
+    "logout": "Logout"
+    }
+  },
+  "subscription": {
+    "current_subscription": "Current Subscription",
+    "secure_payment_note": "Secure payment via Stripe",
+    "plansfooterNote" : "Billing and cancellation can be handled securely at any time via Stripe.",
+    "belowbuttonnote" : "No contract term. Can be cancelled at any time.",
+    "plan": "Plan",
+    "status_label": "Status",
+    "next_billing": "Next Billing",
+    "manage": "Manage Subscription",
+    "choose_plan": "Choose Plan",
+    "upgrade_plan": "Upgrade Plan",
+    "current_plan": "Current Plan",
+    "upgrade_alert": "Please upgrade to a paid plan to manage subscription.",
+    "status": {
+      "active": "Active",
+      "inactive": "Inactive",
+      "canceled": "Canceled",
+      "trialing": "Trial"
+    },
+    "current_plan_options": {
+      "Free": "Free",
+      "Basic": "Basic",
+      "Pro": "Pro",
+      "Enterprise": "Enterprise"
+    },
+    "plan_options": {
+      "Basic": "Basic",
+      "Pro": "Pro",
+      "Enterprise": "Enterprise"
+    },
+    "per": "per",
+    "interval": {
+    "month": "Month",
+    "year": "Year"
+    },
+    "features": {
+      "unlimited_places": "Unlimited places",
+      "featured_badge": "Featured badge",
+      "top_ranking": "Top ranking",
+      "analytics_access": "Analytics access",
+      "full_gallery": "Full gallery",
+      "priority_ranking": "Priority ranking",
+      "up_to_3_places": "Up to 3 places",
+      "photo_upload": "Photo upload",
+      "standard_ranking": "Standard ranking"
+    },
+    "planDescriptions" : {
+      "Basic": "Ideal for small nursing homes or for getting started. Visibility in search results and easy management of your available places.",
+
+      "Pro": "For nursing homes with regularly available places. Better placement in search results and professional presentation of your facility.",
+
+      "Enterprise": "For large facilities or operators with multiple locations. Maximum visibility, top ranking, and preferred presentation for faster inquiries."
+    }
+  },
+  "subscription_list": {
+    "title": "Subscription List",
+    "table": {
+      "user_name": "User Name",
+      "facility_name": "Nursing Home Place",
+      "plan": "Plan",
+      "status": "Status",
+      "start_date": "Date",
+      "end_date": "End Date",
+      "no_data": "No subscriptions found",
+      "user_details" : "User Details"
+    },
+    "plan_status": {
+      "active": "Active",
+      "expired": "Expired",
+      "cancelled": "Cancelled",
+      "trialing": "Trial"
+    },
+    "current_plan": {
+    "Basic": "Basic",
+    "Pro": "Pro",
+    "Enterprise": "Unternehmen"
+    } 
+  },
+  "common": {
+    "none": "None",
+    "close" : "Close"
+  },
+  "footer": {
+    "imprint": "Imprint",
+    "privacy": "Privacy Policy",
+    "terms": "Terms & Conditions"
+  },
+  "terms": {
+    "title": "Terms & Conditions",
+
+    "intro_title": "Introduction",
+    "intro": "Welcome to PflegeFinder. By accessing or using our website and services, you agree to be bound by these Terms & Conditions. If you do not agree, please do not use our services.",
+
+    "use_title": "Use of the Platform",
+    "use": "You may use PflegeFinder only for lawful purposes. You agree not to misuse the platform, interfere with its operation, or attempt to gain unauthorized access to any part of the system.",
+
+    "account_title": "User Accounts",
+    "account": "To access certain features, you may be required to create an account. You are responsible for maintaining the confidentiality of your account credentials and all activities performed under your account.",
+
+    "payment_title": "Payments & Subscriptions",
+    "payment": "Some features of PflegeFinder may require paid subscriptions. All payments are processed securely via third-party payment providers. Subscription fees are non-refundable unless required by law.",
+
+    "termination_title": "Termination",
+    "termination": "We reserve the right to suspend or terminate your access to the platform at any time if you violate these Terms & Conditions or engage in unlawful activities.",
+
+    "liability_title": "Limitation of Liability",
+    "liability": "PflegeFinder is provided on an \"as is\" basis. We do not guarantee the accuracy or completeness of the information on the platform and are not liable for any damages arising from its use.",
+
+    "changes_title": "Changes to Terms",
+    "changes": "We may update these Terms & Conditions from time to time. Continued use of the platform after changes indicates your acceptance of the updated terms.",
+
+    "contact_title": "Contact Information",
+    "contact": "If you have any questions regarding these Terms & Conditions, please contact us through the information provided on our website."
+  },
+  "Privacy": {
+    "title": "Privacy Policy",
+
+    "intro_title": "1. Introduction",
+    "intro": "Welcome to PflegeFinder. Your privacy is important to us. This Privacy Policy explains how we collect, use, and protect your personal information.",
+
+    "use_title": "2. Use of Information",
+    "use": "We use your personal data to provide and improve our services, respond to inquiries, and ensure a smooth user experience.",
+
+    "account_title": "3. User Accounts",
+    "account": "When you create an account, you are responsible for maintaining the confidentiality of your login credentials and all activities under your account.",
+
+    "payment_title": "4. Payments & Subscriptions",
+    "payment": "All payments are processed securely via third-party providers. We do not store your card or payment details on our servers.",
+
+    "termination_title": "5. Account Termination",
+    "termination": "We reserve the right to suspend or terminate accounts that violate our policies or misuse the platform.",
+
+    "liability_title": "6. Limitation of Liability",
+    "liability": "PflegeFinder is provided \"as is\" without warranties of any kind. We are not liable for damages arising from the use of our services."
+  }
+}

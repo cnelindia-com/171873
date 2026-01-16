@@ -1,0 +1,12 @@
+# React Router configuration for Apache Server
+# This file ensures that all routes redirect to index.html
+
+Options -MultiViews
+RewriteEngine On
+
+# If the requested file or directory doesn't exist
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# Redirect everything to index.html so React Router can handle it
+RewriteRule ^ index.html [L]

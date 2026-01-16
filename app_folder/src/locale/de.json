@@ -1,0 +1,621 @@
+{
+  "dashboard": { "title": "Armaturenbrett" },
+  "greetings": { "hello": "Hallo" },
+  "buttons": { "logout": "Abmelden", "login": "Einloggen" },
+  "auth": {
+    "login_title": "Willkommen zurück",
+    "register_title": "Neues Konto erstellen",
+
+    "name": "Name",
+    "facility_name": "Name der Einrichtung",
+    "phone": "Telefonnummer",
+    "street": "Straße",
+    "postcode": "Postleitzahl",
+    "city": "Stadt",
+    "country": "Land",
+    "email": "E-Mail-Adresse",
+    "password": "Passwort",
+    "confirm_password": "Passwort bestätigen",
+
+    "login": "Einloggen",
+    "register": "Registrieren",
+
+    "no_account": "Noch kein Konto?",
+    "have_account": "Bereits registriert?",
+    "register_now": "Jetzt registrieren",
+    "go_login": "Zum Login",
+
+    "accept_terms": "Ich akzeptiere die",
+    "terms_and_privacy": "AGB & Datenschutzerklärung",
+    "required": "Pflichtfelder",
+
+    "password_mismatch": "Passwort und Bestätigung stimmen nicht überein!",
+    "login_failed": "Ungültige Anmeldedaten!",
+    "register_failed": "Registrierung fehlgeschlagen!",
+    "register_success": "Registrierung erfolgreich! Weiterleitung..."
+  },
+  "home": {
+    "hero": {
+      "title": "Pflegeheim-Plätze schneller finden",
+      "subtitle": "Finden Sie schnell und einfach verfügbare Pflegeheim-Plätze in Ihrer Nähe",
+      "cta": "Jetzt suchen"
+    },
+
+    "services": {
+      "title": "Unsere Services",
+      "search": {
+        "title": "Einfache Suche",
+        "desc": "Finden Sie Pflegeheime nach Postleitzahl, Stadt oder spezifischen Kriterien"
+      },
+      "details": {
+        "title": "Detaillierte Informationen",
+        "desc": "Alle wichtigen Details zu Pflegestufen, Zimmern und Verfügbarkeiten"
+      },
+      "contact": {
+        "title": "Direkter Kontakt",
+        "desc": "Kontaktieren Sie Pflegeheime direkt über unser Kontaktformular"
+      },
+      "facilities": {
+        "title": "Für Pflegeheime",
+        "desc": "Verwalten Sie Ihre verfügbaren Plätze und erreichen Sie neue Bewohner"
+      }
+    },
+
+    "stats": {
+      "title": "Aktuelle Plattform-Aktivität",
+      "homes": "Registrierte Pflegeheime",
+      "places": "Aktuell verfügbare Plätze",
+      "matches": "Kontaktanfragen"
+    },
+
+    "footer": {
+      "rights": "Alle Rechte vorbehalten.",
+      "privacy": "Datenschutzerklärung"
+    },
+
+    "privacy": {
+      "title": "Datenschutzerklärung",
+      "back": "Zurück",
+      "intro_title": "1. Einführung",
+      "intro": "Willkommen bei PflegeFinder. Der Schutz Ihrer persönlichen Daten ist uns sehr wichtig.",
+      "data_title": "2. Datenerhebung",
+      "data": "Wir erfassen personenbezogene Daten wie Name, E-Mail-Adresse und Telefonnummer, wenn Sie unsere Dienste nutzen.",
+      "usage_title": "3. Verwendung der Daten",
+      "usage": "Ihre Daten werden ausschließlich dazu verwendet, Pflegeheime zu finden und Ihre Anfragen zu beantworten.",
+      "share_title": "4. Weitergabe der Daten",
+      "share": "Wir geben Ihre Daten nicht an Dritte weiter, außer wenn dies gesetzlich erforderlich ist.",
+      "cookies_title": "5. Cookies",
+      "cookies": "Diese Website verwendet Cookies zur Verbesserung der Benutzererfahrung. Sie können Cookies jederzeit in Ihrem Browser deaktivieren.",
+      "security_title": "6. Sicherheit",
+      "security": "Wir setzen moderne Sicherheitsmaßnahmen ein, um Ihre Daten zu schützen.",
+      "contact_title": "7. Kontakt",
+      "contact": "Bei Fragen kontaktieren Sie uns unter: info@pflegefinder.de"
+    }
+  },
+  "search": {
+    "title": "Pflegeheim finden",
+    "subtitle": "Das passende Heim für Ihre Liebsten – schnell und einfach",
+
+    "form": {
+      "postal_code": "PLZ",
+      "please_select": "Bitte wählen.",
+      "postal_placeholder": "z.B. 53111",
+      "city": "Stadt",
+      "all": "Alle",
+      "care_level": "Pflegestufe",
+      "availability": "Verfügbarkeit",
+      "search": "Jetzt suchen",
+      "reset": "Zurücksetzen",
+
+      "care_levels": {
+        "1": "Basic",
+        "2": "Demenz",
+        "3": "Intensiv",
+        "4": "Kurzfristig"
+      },
+
+      "availability_options": {
+        "1": "Sofort",
+        "2": "Bald",
+        "3": "Auf Anfrage"
+      },
+      "room_types": {
+        "1": "Einzelzimmer",
+        "2": "Doppelzimmer"
+
+      }
+    },
+
+    "results": {
+      "found": "Einrichtungen gefunden",
+      "no_results_title": "Keine Ergebnisse gefunden",
+      "no_results_desc": "Versuchen Sie, Ihre Filter zu ändern oder eine nahegelegene Stadt zu suchen."
+    },
+
+    "sort": {
+      "recommended": "Empfohlen",
+      "price_desc": "Preis: Günstig → Teuer",
+      "price_asc": "Preis: Teuer → Günstig",
+      "distance": "Entfernung",
+      "availability": "Verfügbarkeit"
+    },
+
+    "card": {
+      "featured": "Ausgewählt",
+      "care": "Pflege Art",
+      "room": "Zimmer Art",
+      "availability": "Verfügbarkeit",
+      "price": "Preis",
+      "details": "Details anzeigen",
+      "price_per_month": "€/Monat"
+    },
+
+    "alerts": {
+      "city_or_zip": "Bitte Stadt oder PLZ eingeben"
+    },
+    "plans": {
+      "basic": {
+        "title": "Basis-Eintrag",
+        "sub": "Standard-Sichtbarkeit"
+      },
+      "pro": {
+        "title": "Bevorzugter Eintrag",
+        "sub": "Höhere Sichtbarkeit in den Suchergebnissen"
+      },
+      "enterprise": {
+        "title": "Top-Eintrag",
+        "sub": "Maximale Sichtbarkeit und bevorzugte Platzierung"
+      },
+      "free": {
+        "title": "Frei-Eintrag",
+        "sub" : "Freier Platz"
+      }
+    },
+    "errors": {
+      "postal_not_found": "Für diese Postleitzahl sind aktuell keine Pflegeplätze hinterlegt"
+    }
+  },
+  "details": {
+    "description": "Beschreibung",
+    "no_description": "Noch keine Beschreibung verfügbar.",
+    "address": "Adresse",
+    "care_type": "Pflege Art",
+    "care_basic": "Basic",
+    "care_dementia": "Demenz",
+    "care_intensive": "Intensiv",
+    "care_short_term": "Kurzfristig",
+    "price": "Preis",
+    "per_month": "€/Monat",
+    "availability_immediate": "Sofort",
+    "availability_soon": "Bald",
+    "availability_on_request": "Auf Anfrage",
+    "rating": "Bewertung",
+    "request_inquiry": "Anfrage stellen",
+    "no_commitment": "Keine Vertragsverpflichtung – Ihre Anfrage ist unverbindlich.",
+    "key_facts": "Wichtige Fakten",
+    "care_levels": {
+      "1": "Basic",
+      "2": "Demenz",
+      "3": "Intensiv",
+      "4": "Kurzfristig"
+    },
+    "room_types": {
+      "1": "Einzelzimmer",
+      "2": "Doppelzimmer"
+    },
+    "availability": {
+      "1": "Sofort",
+      "2": "Bald",
+      "3": "Auf Anfrage"
+    },
+    "loading": "Lade Details der Anlage...",
+    "back_to_search": "Zurück zur Suche"
+  },
+  "inquiry": {
+    "title": "Anfrage senden",
+    "placeholders": {
+      "name": "Vollständiger Name",
+      "email": "E-Mail",
+      "phone": "Telefonnummer",
+      "care_type": "Pflegeart auswählen",
+      "message": "Nachricht (optional)"
+    },
+    "errors": {
+      "required_fields": "Bitte füllen Sie alle Pflichtfelder aus.",
+      "invalid_email": "Bitte geben Sie eine gültige E-Mail-Adresse ein.",
+      "invalid_phone": "Bitte geben Sie eine gültige Telefonnummer ein.",
+      "generic": "Etwas ist schiefgelaufen. Bitte versuchen Sie es später erneut."
+    },
+    "success": "Vielen Dank, Ihre Anfrage wurde erfolgreich gesendet.",
+    "submit": "Senden"
+  },
+  "pagination": {
+    "previous": "Vorherige",
+    "next": "Nächste",
+    "page": "Seite",
+    "of": "von"
+  },
+  "ad-dashboard": {
+    "welcome": "Willkommen zurück, {{name}}",
+    "default_name": "Ihr Pflegeheim",
+
+    "stats": {
+      "active_places": "Aktive Plätze",
+      "total_inquiries": "Gesamtanfragen",
+      "this_month": "Diesen Monat"
+    },
+
+    "actions": {
+      "add_place": "Neuen Platz hinzufügen",
+      "manage_subscription": "Abonnement verwalten"
+    }
+  },
+  "addSpot": {
+    "add_title": "Pflegeplatz hinzufügen",
+    "edit_title": "Pflegeplatz bearbeiten",
+    "desc": "Erstellen Sie hier einen neuen Pflegeplatz, der in den Suchergebnissen angezeigt wird.",
+    "back": "Zurück",
+    "fields": {
+      "user_select": "User auswählen *",
+      "select_user": "Benutzer auswählen",
+      "place_name": "Bezeichnung des Pflegeplatzes *",
+      "room_type": "Art des Zimmers *",
+      "care_level": "Pflegegrad *",
+      "price_per_month": "Preis pro Monat *",
+      "availability": "Verfügbarkeit *",
+      "price": "Preis € *",
+      "plan_level": "Planstufe",
+      "description": "Beschreibung",
+      "helpers_desc": "Beschreiben Sie den Pflegeplatz kurz und sachlich (z. B. Ausstattung, Lage, Besonderheiten)",
+      "helpers_price" : "Der angegebene Preis dient zur Orientierung für Suchende.",
+      "status": "Status",
+      "address": "Adresse",
+      "street": "Straße *",
+      "postal_code": "Postleitzahl *",
+      "city": "Stadt *",
+      "latitude": "Breitengrad",
+      "longitude": "Längengrad",
+      "lat_lng_note": "Optional: Breitengrad & Längengrad Felder für Entfernungsberechnung",
+      "upload_photos": "Fotos hochladen",
+      "select": "Auswählen"
+    },
+    "options": {
+      "single_room": "Einzelzimmer",
+      "double_room": "Doppelzimmer",
+      "basic": "Basic",
+      "dementia": "Demenz",
+      "intensive": "Intensiv",
+      "short_term": "Kurzfristig",
+      "immediate": "Sofort",
+      "soon": "Bald",
+      "on_request": "Auf Anfrage",
+      "active" : "Aktiv",
+      "inactive" : "Inaktiv",
+      "draft" : "Entwurf",
+      "free": "Frei",
+      "pro": "Pro",
+      "enterprise": "Unternehmen"
+    },
+    "buttons": {
+      "save": "Pflegeplatz speichern",
+      "update": "Aktualisieren",
+      "cancel": "Abbrechen"
+    },
+    "toast": {
+    "login_required": "Bitte zuerst einloggen!",
+    "spot_added": "Pflegeplatz wurde erfolgreich gespeichert!",
+    "spot_updated": "Pflegeplatz erfolgreich aktualisiert!",
+    "save_error": "Fehler beim Speichern des Pflegeplatzes!",
+    "users_load_error": "Benutzer konnten nicht geladen werden"
+    },
+    "errors": {
+      "BASIC_LIMIT_EXCEEDED": "Der BASIC-Plan ermöglicht bis zu 3 aktive Standorte. Bitte führen Sie ein Upgrade auf PRO durch.",
+      "PLAN_EXPIRED": "Ihr Plan ist abgelaufen. Sie können keine neuen Standorte hinzufügen. Bitte führen Sie ein Upgrade durch",
+      "IMAGE_LIMIT_EXCEEDED": "Bildlimit überschritten. Ihr Tarif erlaubt maximal {{max}} Bilder."
+    },
+    "success": {
+      "IMAGE_UPDATED": "Bild erfolgreich aktualisiert.",
+      "IMAGE_DELETED": "Bild erfolgreich gelöscht."
+    },
+    "images": {
+      "limit": "Maximal {{count}} Bilder gemäß Ihrem aktuellen Tarif.",
+      "unlimited": "Sie können mit Ihrem Tarif unbegrenzt Bilder hochladen."
+    }
+  },
+  "spots": {
+    "title": "Meine Plätze",
+    "add_new": "+ Pflegplatz hinzufügen",
+    "loading": "Lade...",
+    "expired_plan": "Plan abgelaufen – Upgrade nötig",
+    "table": {
+      "place_name": "Platzname",
+      "room_type": "Zimmertyp",
+      "care_type":"Pflege Art",
+      "price_per_month": "Preis (€/Monat)",
+      "availability": "Verfügbarkeit",
+      "status": "Status",
+      "plan": "Plan",
+      "actions": "Aktionen"
+    },
+    "room_types": {
+      "1": "Einzelzimmer",
+      "2": "Doppelzimmer"
+    },
+    "care_options": {
+      "1": "Basic",
+      "2": "Demenz",
+      "3": "Intensiv",
+      "4": "Kurzfristig"
+    },
+    "availability_options": {
+      "1": "Sofort",
+      "2": "Bald",
+      "3": "Auf Anfrage"
+    },
+    "status_options": {
+      "active": "Aktiv",
+      "inactive": "Inaktiv",
+      "draft": "Entwurf"
+    },
+    "plan_options": {
+      "free": "Frei",
+      "basic": "Basic",
+      "pro": "Pro",
+      "enterprise": "Unternehmen"
+    },
+    "no_spots": "Sie haben noch keine Plätze. Beginnen Sie damit, Ihren ersten verfügbaren Platz hinzuzufügen.",
+    "buttons": {
+      "add_new": "+ Neuer Platz",
+      "prev": "Zurück",
+      "next": "Weiter",
+      "yes": "Ja",
+      "no": "Nein",
+      "ok": "OK"
+    },
+    "confirm_delete_title": "Löschen bestätigen",
+    "confirm_delete_message": "Sind Sie sicher, dass Sie diesen Platz löschen möchten?",
+    "delete_error_title": "Fehler",
+    "delete_error_message": "Platz konnte nicht gelöscht werden."
+  },
+  "leads": {
+    "title": "Leads & Analysen",
+    "kpi": {
+      "total": "Gesamtzahl der Anfragen",
+      "monthly": "Anfragen in diesem Monat",
+      "last": "Letzte Anfrage"
+    },
+    "table": {
+      "title": "Letzte Anfragen",
+      "date": "Datum",
+      "name": "Name",
+      "care_type": "Pflegeart",
+      "email": "E-Mail",
+      "message": "Nachricht",
+      "status": "Status",
+      "no_inquiries": "Keine Anfragen gefunden"
+    },
+    "care_types": {
+      "1": "Basic",
+      "2": "Demenz",
+      "3": "Intensiv",
+      "4": "Kurzfristig"
+    },
+    "status_options": {
+      "new": "Neu",
+      "draft": "Entwurf",
+      "active": "Aktiv"
+    },
+    "pagination": {
+      "prev": "Zurück",
+      "next": "Weiter"
+    }
+  },
+  "profile": {
+  "edit_title": "Profil bearbeiten",
+  "password_title": "Passwort ändern",
+
+  "labels": {
+    "name": "Vollstandiger Name",
+    "email": "E-Mail",
+    "phone": "Telefonnummer",
+    "current_password": "Aktuelles Passwort",
+    "new_password": "Passwort",
+    "confirm_password": "Passwort bestätigen"
+  },
+
+  "buttons": {
+    "save": "Wechsel speichern",
+    "cancel": "Abbrechen",
+    "loading": "Bitte warten...",
+    "change_image": "Bild ändern"
+  },
+
+  "messages": {
+    "password_mismatch": "Passwortbestätigung stimmt nicht überein!",
+    "success": "Profil erfolgreich gespeichert",
+    "error": "Änderungen konnten nicht gespeichert werden!"
+  }
+},
+
+  "audit": {
+    "title": "Prüfprotokolle",
+
+    "table": {
+      "index": "#",
+      "user": "Benutzername",
+      "action": "Aktion",
+      "meta": "Meta",
+      "created_at": "Erstellt am",
+      "actions": "Aktionen",
+      "empty": "Keine Audit-Logs vorhanden."
+    },
+
+    "buttons": {
+      "delete": "Löschen",
+      "prev": "Zurück",
+      "next": "Weiter",
+      "yes": "Ja",
+      "no": "Nein",
+      "ok": "OK"
+    },
+
+    "confirm": {
+      "title": "Löschen bestätigen",
+      "message": "Sind Sie sicher, dass Sie dieses Log löschen möchten?"
+    },
+
+    "errors": {
+      "title": "Fehler",
+      "delete_failed": "Log konnte nicht gelöscht werden."
+    }
+  },
+  "sidebar": {
+    "menu": {
+    "title": "Armaturenbrett",
+    "dashboard": "Überblick",
+    "places": "Meine Orte",
+    "leads": "Leads & Analysen",
+    "subscription": "Abonnement",
+    "subscription_list": "Abonnementliste",
+    "activity_logs": "Aktivitätsprotokolle",
+    "profile": "Profileinstellungen",
+    "logout": "Abmelden"
+    }
+  },
+  "subscription": {
+    "current_subscription": "Aktuelles Abonnement",
+    "secure_payment_note": "Sichere Zahlung über Stripe",
+    "plansfooterNote" : "Abrechnung und Kündigung jederzeit sicher über Stripe.",
+    "belowbuttonnote" : "Keine Vertragslaufzeit. Jederzeit kündbar.",
+    "plan": "Plan",
+    "status_label": "Status",
+    "next_billing": "Nächste Abrechnung",
+    "manage": "Abonnement verwalten",
+    "choose_plan": "Plan auswählen",
+    "upgrade_plan": "Plan upgraden",
+    "current_plan": "Aktueller Plan",
+    "upgrade_alert": "Bitte upgraden Sie auf einen kostenpflichtigen Plan, um das Abonnement zu verwalten.",
+    "status": {
+      "active": "Aktiv",
+      "inactive": "Inaktiv",
+      "canceled": "Gekündigt",
+      "trialing": "Testphase"
+    },
+    "current_plan_options": {
+      "Free": "Frei",
+      "Basic": "Basic",
+      "Pro": "Pro",
+      "Enterprise": "Unternehmen"
+    },
+    "plan_options": {
+      "Free": "Frei",
+      "Basic": "Basic",
+      "Pro": "Pro",
+      "Enterprise": "Unternehmen"
+    },
+    "per": "pro",
+    "interval": {
+      "month": "Monat",
+      "year": "Jahr"
+    },
+    "features": {
+      "unlimited_places": "Unbegrenzte Einträge",
+      "featured_badge": "Hervorgehobenes Abzeichen",
+      "top_ranking": "Top-Platzierung",
+      "analytics_access": "Analysezugriff",
+      "full_gallery": "Vollständige Galerie",
+      "priority_ranking": "Bevorzugtes Ranking",
+      "up_to_3_places": "Bis zu 3 Einträge",
+      "photo_upload": "Foto-Upload",
+      "standard_ranking": "Standard-Ranking"
+    },
+    "planDescriptions" : {
+      "Basic": "Ideal für kleine Pflegeheime oder für den Einstieg.Sichtbarkeit in den Suchergebnissen und einfache Verwaltung Ihrer verfügbaren Plätze.",
+
+      "Pro": "Für Pflegeheime mit regelmäßig freien Plätzen.Bessere Platzierung in den Suchergebnissen und professionelle Darstellung Ihrer Einrichtung.",
+
+      "Enterprise": "Für große Einrichtungen oder Betreiber mit mehreren Standorten.Maximale Sichtbarkeit, Top-Platzierung und bevorzugte Darstellung für schnellere Anfragen."
+    }
+  },
+  "subscription_list": {
+    "title": "Abonnementliste",
+    "table": {
+      "user_name": "Benutzername",
+      "facility_name": "Pflegeplatz",
+      "plan": "Plan",
+      "status": "Status",
+      "start_date": "Datum",
+      "end_date": "Enddatum",
+      "no_data": "Keine Abonnements gefunden",
+      "user_details":"Benutzerdetails"
+    },
+    "plan_status": {
+      "active": "Aktiv",
+      "expired": "Abgelaufen",
+      "cancelled": "Gekündigt",
+      "trialing": "Testphase"
+    },
+    "current_plan": {
+    "Basic": "Basic",
+    "Pro": "Pro",
+    "Enterprise": "Unternehmen"
+    } 
+  },
+  "common": {
+    "none": "Keine",
+    "close" : "Schließen"
+  },
+  "footer": {
+    "imprint": "Impressum",
+    "privacy": "Datenschutz",
+    "terms": "AGB"
+  },
+  "terms": {
+    "title": "Allgemeine Geschäftsbedingungen",
+
+    "intro_title": "Einleitung",
+    "intro": "Willkommen bei PflegeFinder. Durch den Zugriff auf unsere Website und die Nutzung unserer Dienste erklären Sie sich mit diesen Allgemeinen Geschäftsbedingungen einverstanden. Wenn Sie nicht einverstanden sind, nutzen Sie unsere Dienste bitte nicht.",
+
+    "use_title": "Nutzung der Plattform",
+    "use": "Sie dürfen PflegeFinder ausschließlich für rechtmäßige Zwecke nutzen. Eine missbräuchliche Nutzung, Störung des Betriebs oder unbefugter Zugriff auf das System ist untersagt.",
+
+    "account_title": "Benutzerkonten",
+    "account": "Für bestimmte Funktionen ist die Erstellung eines Benutzerkontos erforderlich. Sie sind für die Sicherheit Ihrer Zugangsdaten und alle Aktivitäten unter Ihrem Konto verantwortlich.",
+
+    "payment_title": "Zahlungen & Abonnements",
+    "payment": "Einige Funktionen von PflegeFinder sind kostenpflichtig. Zahlungen werden sicher über Drittanbieter abgewickelt. Abonnementgebühren sind nicht erstattungsfähig, sofern gesetzlich nichts anderes vorgeschrieben ist.",
+
+    "termination_title": "Kündigung",
+    "termination": "Wir behalten uns das Recht vor, Ihren Zugang zur Plattform zu sperren oder zu beenden, wenn Sie gegen diese Bedingungen verstoßen oder rechtswidrige Aktivitäten durchführen.",
+
+    "liability_title": "Haftungsbeschränkung",
+    "liability": "PflegeFinder wird \"wie gesehen\" bereitgestellt. Wir übernehmen keine Gewähr für die Richtigkeit oder Vollständigkeit der Inhalte und haften nicht für Schäden, die aus der Nutzung entstehen.",
+
+    "changes_title": "Änderungen der Bedingungen",
+    "changes": "Wir können diese Bedingungen jederzeit aktualisieren. Die fortgesetzte Nutzung der Plattform gilt als Zustimmung zu den geänderten Bedingungen.",
+
+    "contact_title": "Kontakt",
+    "contact": "Bei Fragen zu diesen Allgemeinen Geschäftsbedingungen kontaktieren Sie uns bitte über die auf unserer Website angegebenen Kontaktdaten."
+  },
+  "Privacy": {
+    "title": "Datenschutzerklärung",
+
+    "intro_title": "1. Einführung",
+    "intro": "Willkommen bei PflegeFinder. Der Schutz Ihrer persönlichen Daten ist uns sehr wichtig. Diese Datenschutzerklärung erklärt, wie wir Ihre Daten erfassen und verwenden.",
+
+    "use_title": "2. Verwendung der Daten",
+    "use": "Wir verwenden Ihre personenbezogenen Daten, um unsere Dienste bereitzustellen, zu verbessern und Anfragen zu beantworten.",
+
+    "account_title": "3. Benutzerkonten",
+    "account": "Bei der Erstellung eines Kontos sind Sie für die Sicherheit Ihrer Zugangsdaten und alle Aktivitäten unter Ihrem Konto verantwortlich.",
+
+    "payment_title": "4. Zahlungen & Abonnements",
+    "payment": "Alle Zahlungen werden sicher über Drittanbieter abgewickelt. Wir speichern keine Zahlungsdaten auf unseren Servern.",
+
+    "termination_title": "5. Kündigung",
+    "termination": "Wir behalten uns das Recht vor, Konten zu sperren oder zu kündigen, wenn gegen unsere Richtlinien verstoßen wird.",
+
+    "liability_title": "6. Haftungsbeschränkung",
+    "liability": "PflegeFinder wird \"wie gesehen\" bereitgestellt. Wir übernehmen keine Haftung für Schäden, die aus der Nutzung unserer Dienste entstehen."
+  }
+}
