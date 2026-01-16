@@ -96,6 +96,7 @@ Route::middleware('auth:sanctum')->group(function () {
 
 Route::get('/search', [SearchFilterController::class, 'filter']);
 Route::get('/facility/{id}', [SearchFilterController::class, 'details']);
+Route::get('/city-by-postal', [SearchFilterController::class, 'getCityByPostal']);
 
 // Route::post('/send-inquiry', [ContactInquiryController::class, 'sendInquiry']);
 Route::post('/send-inquiry', [ContactInquiryController::class, 'sendInquiry']);

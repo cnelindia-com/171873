@@ -196,4 +196,31 @@ class SearchFilterController extends Controller
             "data"   => $spot,
         ]);
     }
+
+    public function getCityByPostal(Request $request)
+{
+    if (! $request->filled('postal_code')) {
+        return response()->json([
+            'status' => false,
+            'message' => 'Postal code required'
+        ], 422);
+    }
+
+    $spot = Spot::where('postal_code', 'LIKE', $request->postal_code . '%')
+        ->select('city')
+        ->first();
+
+    if (! $spot) {
+        return response()->json([
+            'status' => false,
+            'city' => null
+        ]);
+    }
+
+    return response()->json([
+        'status' => true,
+        'city' => $spot->city
+    ]);
+}
+
 }
